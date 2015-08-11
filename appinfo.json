@@ -1,0 +1,41 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        "configurable"
+    ],
+    "companyName": "theksmith",
+    "longName": "The Architect Watch",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/pebble-the-architect-box.png",
+                "name": "IMAGE_BOX_WHITE",
+                "type": "png"
+            },
+            {
+                "characterRegex": "[A-Z0-9 /+\\-]",
+                "file": "fonts/Flux_Architect_Regular.ttf",
+                "name": "FONT_FLUXARCHITECT_REGULAR_13",
+                "type": "font"
+            },
+            {
+                "characterRegex": "[0-9:]",
+                "file": "fonts/Archistico_Bold.ttf",
+                "name": "FONT_ARCHISTICO_BOLD_46",
+                "type": "font"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "The Architect",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
+    "uuid": "609e0636-c5a6-4b43-9e59-0181ca5a9fe8",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
