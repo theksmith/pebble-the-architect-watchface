@@ -9,15 +9,15 @@
     "resources": {
         "media": [
             {
-                "file": "images/pebble-the-architect-box.png",
-                "name": "IMAGE_BOX_WHITE",
-                "type": "png"
-            },
-            {
                 "characterRegex": "[A-Z0-9 /+\\-]",
                 "file": "fonts/Flux_Architect_Regular.ttf",
                 "name": "FONT_FLUXARCHITECT_REGULAR_13",
                 "type": "font"
+            },
+            {
+                "file": "images/pebble-the-architect-box.png",
+                "name": "IMAGE_BOX_WHITE",
+                "type": "png"
             },
             {
                 "characterRegex": "[0-9:]",
