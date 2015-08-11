@@ -17,6 +17,6 @@ Copyright 2015 Kristoffer Smith
 
 #### Acknowledgments
 
-+	This project is made possible by fonts with permissive licenses, thank you to the authors!
+This project is made possible by fonts with permissive licenses, thank you to the authors!
 +	"Archistico" font copyright Emilie Rollandin (http://www.archistico.com/portfolio/font-archistico/)
 +	"Flux Architect" font copyright Clayton Cowan (http://www.fontsquirrel.com/license/Flux)
