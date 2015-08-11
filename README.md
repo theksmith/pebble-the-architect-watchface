@@ -7,12 +7,12 @@ A Pebble Watchface inspired by blueprints/drafting.
 
 #### Copyright
 
-Copyright 2015 Kristoffer Smith and other contributors.
+Copyright 2015 Kristoffer Smith
 
 
 #### Authors
 
-+	Kristoffer Smith ([http://theksmith.com/](http://theksmith.com/))
++	Kristoffer Smith (http://theksmith.com/)
 
 
 #### Acknowledgments
