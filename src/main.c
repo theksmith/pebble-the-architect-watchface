@@ -23,6 +23,7 @@ char* strupr(char* s )
 	return s;
 }
 
+
 char* ltrim(char *string, char junk)
 {
     char* original = string;
