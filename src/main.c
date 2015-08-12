@@ -70,13 +70,13 @@ static void handle_minute_tick(struct tm* tick_time, TimeUnits units_changed) {
 	static char s_date_text[] = "10TH / 2000";
 	strftime(s_date_text, sizeof(s_date_text), "%dTH / %Y", tick_time);
 	
-	if (s_date_text[1] == '1') {
+	if (s_date_text[1] == '1' && s_date_text[0] != '1') {
 		s_date_text[2] = 'S';
 		s_date_text[3] = 'T';
-	} else if (s_date_text[1] == '2') {
+	} else if (s_date_text[1] == '2' && s_date_text[0] != '1') {
 		s_date_text[2] = 'N';
 		s_date_text[3] = 'D';
-	} else if (s_date_text[1] == '3') {
+	} else if (s_date_text[1] == '3' && s_date_text[0] != '1') {
 		s_date_text[2] = 'R';
 		s_date_text[3] = 'D';
 	} else {
