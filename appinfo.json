@@ -9,9 +9,15 @@
     "resources": {
         "media": [
             {
-                "characterRegex": "[A-Z0-9 /+\\-]",
-                "file": "fonts/Flux_Architect_Regular.ttf",
-                "name": "FONT_FLUXARCHITECT_REGULAR_13",
+                "file": "images/icon-28x28.png",
+                "menuIcon": true,
+                "name": "IMAGE_ICON_APP",
+                "type": "png"
+            },
+            {
+                "characterRegex": "[0-9:]",
+                "file": "fonts/Archistico_Bold.ttf",
+                "name": "FONT_ARCHISTICO_BOLD_46",
                 "type": "font"
             },
             {
@@ -20,9 +26,9 @@
                 "type": "png"
             },
             {
-                "characterRegex": "[0-9:]",
-                "file": "fonts/Archistico_Bold.ttf",
-                "name": "FONT_ARCHISTICO_BOLD_46",
+                "characterRegex": "[A-Z0-9 /+\\-]",
+                "file": "fonts/Flux_Architect_Regular.ttf",
+                "name": "FONT_FLUXARCHITECT_REGULAR_13",
                 "type": "font"
             }
         ]
