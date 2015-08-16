@@ -2,18 +2,18 @@
 #include <ctype.h>
 
 
-Window *s_main_window;
+static Window *s_main_window;
 
-GFont custom_font_time;
-GFont custom_font_date;
+static GFont s_custom_font_time;
+static GFont s_custom_font_date;
 
 static GBitmap *s_box_bitmap;
 static BitmapLayer *s_box_bitmap_layer; 
 	
-TextLayer *s_time_layer;
-TextLayer *s_weekday_layer;
-TextLayer *s_month_layer;
-TextLayer *s_date_layer;
+static TextLayer *s_time_layer;
+static TextLayer *s_weekday_layer;
+static TextLayer *s_month_layer;
+static TextLayer *s_date_layer;
 
 
 char* strupr(char* s )
@@ -44,7 +44,7 @@ char* ltrim(char *string, char junk)
 }
 
 
-static void handle_minute_tick(struct tm* tick_time, TimeUnits units_changed) {
+static void minute_tick(struct tm* tick_time, TimeUnits units_changed) {
 	//time
 	static char s_time_text[] = "00:00";
 	if (clock_is_24h_style() == true) {
@@ -100,40 +100,40 @@ static void main_window_load(Window *window) {
 	layer_add_child(window_layer, bitmap_layer_get_layer(s_box_bitmap_layer)); 
  
  	//custom fonts
-	custom_font_time = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ARCHISTICO_BOLD_46));
-	custom_font_date = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_FLUXARCHITECT_REGULAR_13));
+	s_custom_font_time = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ARCHISTICO_BOLD_46));
+	s_custom_font_date = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_FLUXARCHITECT_REGULAR_13));
 	
 	//time
 	s_time_layer = text_layer_create(GRect(2, 11, bounds.size.w-2, 90));
 	text_layer_set_text_color(s_time_layer, GColorWhite);
 	text_layer_set_background_color(s_time_layer, GColorClear);
-	text_layer_set_font(s_time_layer, custom_font_time);
+	text_layer_set_font(s_time_layer, s_custom_font_time);
 	text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 	
 	//3 date lines
 	s_weekday_layer = text_layer_create(GRect(2, 91, (bounds.size.w - 2), 110));
 	text_layer_set_text_color(s_weekday_layer, GColorWhite);
 	text_layer_set_background_color(s_weekday_layer, GColorClear);
-	text_layer_set_font(s_weekday_layer, custom_font_date);
+	text_layer_set_font(s_weekday_layer, s_custom_font_date);
 	text_layer_set_text_alignment(s_weekday_layer, GTextAlignmentCenter);
 	
 	s_month_layer = text_layer_create(GRect(2, 109, (bounds.size.w - 2), 130));
 	text_layer_set_text_color(s_month_layer, GColorWhite);
 	text_layer_set_background_color(s_month_layer, GColorClear);	
-	text_layer_set_font(s_month_layer, custom_font_date);
+	text_layer_set_font(s_month_layer, s_custom_font_date);
 	text_layer_set_text_alignment(s_month_layer, GTextAlignmentCenter);
 	
 	s_date_layer = text_layer_create(GRect(2, 127, (bounds.size.w - 2), 150));
 	text_layer_set_text_color(s_date_layer, GColorWhite);
 	text_layer_set_background_color(s_date_layer, GColorClear);
-	text_layer_set_font(s_date_layer, custom_font_date);
+	text_layer_set_font(s_date_layer, s_custom_font_date);
 	text_layer_set_text_alignment(s_date_layer, GTextAlignmentCenter);
 
 	//setup timer & initial run to ensure immediate display
 	time_t now = time(NULL);
 	struct tm *current_time = localtime(&now);
-	handle_minute_tick(current_time, MINUTE_UNIT);
-	tick_timer_service_subscribe(MINUTE_UNIT, handle_minute_tick);
+	minute_tick(current_time, MINUTE_UNIT);
+	tick_timer_service_subscribe(MINUTE_UNIT, minute_tick);
 
 	//actually add the text layers
 	layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
@@ -146,20 +146,20 @@ static void main_window_load(Window *window) {
 static void main_window_unload(Window *window) {
 	tick_timer_service_unsubscribe();
 
-	fonts_unload_custom_font(custom_font_time); 
-	fonts_unload_custom_font(custom_font_date);
-	
-	gbitmap_destroy(s_box_bitmap);
 	bitmap_layer_destroy(s_box_bitmap_layer); 
+	gbitmap_destroy(s_box_bitmap);
 	
 	text_layer_destroy(s_time_layer);
 	text_layer_destroy(s_weekday_layer);
 	text_layer_destroy(s_month_layer);
 	text_layer_destroy(s_date_layer);
+
+	fonts_unload_custom_font(s_custom_font_time); 
+	fonts_unload_custom_font(s_custom_font_date);
 }
 
 
-void handle_init(void) {
+static void init(void) {
 	s_main_window = window_create();
 
 	window_set_background_color(s_main_window, GColorBlack);
@@ -173,13 +173,13 @@ void handle_init(void) {
 }
 
 
-void handle_deinit(void) {
+static void deinit(void) {
 	window_destroy(s_main_window);
 }
 
 
 int main(void) {
-	handle_init();
+	init();
 	app_event_loop();
-	handle_deinit();
+	deinit();
 }

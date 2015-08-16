@@ -9,16 +9,16 @@
     "resources": {
         "media": [
             {
-                "file": "images/icon-28x28.png",
-                "menuIcon": true,
-                "name": "IMAGE_ICON_APP",
-                "type": "png"
-            },
-            {
                 "characterRegex": "[0-9:]",
                 "file": "fonts/Archistico_Bold.ttf",
                 "name": "FONT_ARCHISTICO_BOLD_46",
                 "type": "font"
+            },
+            {
+                "file": "images/icon-28x28.png",
+                "menuIcon": true,
+                "name": "IMAGE_ICON_APP",
+                "type": "png"
             },
             {
                 "file": "images/pebble-the-architect-box.png",

@@ -4,7 +4,7 @@ Pebble.addEventListener('ready', function(e) {
 
 
 Pebble.addEventListener("showConfiguration", function(e) {
-	//todo: finish config screen launch
+	//todo: finish config screen
 	
 	var watchinfo;
 	
@@ -14,7 +14,7 @@ Pebble.addEventListener("showConfiguration", function(e) {
 		watchinfo = {};
 	}
 	
-	//Pebble.openURL('http://theksmith.com/dev/pebble-config.php' + '?platform=' + watchinfo.platform + '&account=' + Pebble.getAccountToken());
+	Pebble.openURL('http://theksmith.com/x/pebble-config/' + '?platform=' + watchinfo.platform + '&account=' + Pebble.getAccountToken());
 });
 
 
